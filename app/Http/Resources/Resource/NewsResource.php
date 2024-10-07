@@ -14,6 +14,16 @@ class NewsResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'content' => $this->content,
+            'excerpt' => $this->excerpt,
+            'images' => $this->images,
+            'relationship' => [],
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
     }
 }

@@ -41,4 +41,6 @@ class Donation extends Model
     {
         return $this->belongsTo(Rekening::class, 'rekening_id');
     }
+
+    
 }

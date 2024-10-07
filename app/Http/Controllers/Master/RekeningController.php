@@ -8,6 +8,7 @@ use App\Models\Rekening;
 use App\Http\Requests\StoreRekeningRequest;
 use App\Http\Requests\UpdateRekeningRequest;
 use App\Http\Resources\Resource\RekeningResource;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class RekeningController extends Controller
@@ -120,5 +121,14 @@ class RekeningController extends Controller
         $rekeningsResource = RekeningResource::make($rekening);
 
         return $this->sendResponse($rekeningsResource, 'Update Status Successfully');
+    }
+
+    public function getRekening(Request $request)
+    {
+        $data = Rekening::query()
+            ->latest()
+            ->get();
+
+        return $this->sendResponse($data, 'Get Data Successfully');
     }
 }

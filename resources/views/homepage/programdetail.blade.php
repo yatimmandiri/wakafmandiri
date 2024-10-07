@@ -115,7 +115,7 @@
     <script type="module">
         $(document).ready(function() {
             ajaxRequest({
-                url: `{{ route('rekenings.index') }}`,
+                url: `{{ route('rekenings.lists') }}`,
             }).done((response) => {
                 setDataSelect({
                     tagid: '#rekening_id',

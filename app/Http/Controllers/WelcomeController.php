@@ -78,26 +78,6 @@ class WelcomeController extends Controller
         return view('homepage.programdetail', $data);
     }
 
-    // public function programProduktif()
-    // {
-    //     $data = [
-    //         'pageTitle' => 'Program Produktif',
-    //         'programs' => Campaign::paginate(9),
-    //     ];
-
-    //     return view('homepage.program', $data);
-    // }
-
-    // public function programSosial()
-    // {
-    //     $data = [
-    //         'pageTitle' => 'Program Sosial',
-    //         'programs' => Campaign::paginate(6),
-    //     ];
-
-    //     return view('homepage.program', $data);
-    // }
-
     public function literasi()
     {
         $data = [

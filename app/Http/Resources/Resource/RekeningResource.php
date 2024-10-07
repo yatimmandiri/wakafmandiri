@@ -14,6 +14,20 @@ class RekeningResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'number' => $this->number,
+            'bank' => $this->bank,
+            'provider' => $this->provider,
+            'token' => $this->token,
+            'icon' => $this->icon,
+            'status' => $this->status,
+            'group' => $this->group,
+            'recomendation' => $this->recomendation,
+            'relationship' => [],
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
     }
 }

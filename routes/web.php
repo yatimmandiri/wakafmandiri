@@ -29,9 +29,6 @@ Route::get('berita/{slug}', [WelcomeController::class, 'beritaBySlug'])->name('b
 Route::get('berita', [WelcomeController::class, 'berita'])->name('home.berita');
 Route::get('literasi/{slug}', [WelcomeController::class, 'literasiBySlug'])->name('literasi.show');
 Route::get('literasi', [WelcomeController::class, 'literasi'])->name('home.literasi');
-// Route::get('program/produktif/{slug}', [WelcomeController::class, 'programProduktifBySlug'])->name('home.program.produktif.show');
-// Route::get('program/produktif', [WelcomeController::class, 'programProduktif'])->name('home.program.produktif');
-// Route::get('program/sosial', [WelcomeController::class, 'programSosial'])->name('home.program.sosial');
 Route::get('program/{slug}', [WelcomeController::class, 'programBySlug'])->name('programs.show');
 Route::get('program', [WelcomeController::class, 'program'])->name('home.program');
 
@@ -91,3 +88,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('payments/{notransaksi}', [DonationController::class, 'payments'])->name('donations.payments');
+Route::get('rekenings', [RekeningController::class, 'getRekening'])->name('rekenings.lists');
+Route::post('donations', [DonationController::class, 'store'])->name('donations.store');

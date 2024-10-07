@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Donation;
 use App\Http\Requests\StoreDonationRequest;
 use App\Http\Requests\UpdateDonationRequest;
+use App\Http\Resources\Resource\CampaignResource;
 use App\Http\Resources\Resource\DonationResource;
 use App\Models\Campaign;
 use App\Models\Rekening;
@@ -242,6 +243,22 @@ class DonationController extends Controller
 
     public function payments(string $notransaksi)
     {
-        return $notransaksi;
+        $donations = Donation::with(['campaigns'])->where('no_transaksi', $notransaksi)
+            ->first();
+
+        if (!$donations) {
+            return abort(404);
+        }
+
+        $campaigns = Campaign::where('id', $donations->campaign_id)->first();
+        $campaignResource = CampaignResource::make($campaigns);
+
+        $data = [
+            'pageTitle' => 'Payment Details',
+            'campaigns' => $campaignResource,
+            'donation' => DonationResource::make($donations),
+        ];
+
+        return view('homepage.payments', $data);
     }
 }
