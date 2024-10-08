@@ -40,7 +40,7 @@ class Controller extends BaseController
     protected function initMidtrans()
     {
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
-        Config::$isProduction = true;
+        Config::$isProduction = false;
         Config::$isSanitized = true;
         Config::$is3ds = true;
     }
