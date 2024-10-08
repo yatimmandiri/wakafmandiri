@@ -82,12 +82,12 @@ class PageController extends Controller
         $page->slug = Str::slug($request->name);
         $page->content = $request->description;
 
-        if ($request->hasFile('images') && $request->file('images')->isValid()) {
+        if ($request->hasFile('feature_image') && $request->file('feature_image')->isValid()) {
             if ($page->images != 'images.png') {
                 Storage::disk('public')->delete($page->images);
             }
 
-            $paths = $request->file('images')->store('uploads', 'public');
+            $paths = $request->file('feature_image')->store('uploads', 'public');
             $page->images = $paths;
         }
 
